@@ -23,18 +23,21 @@ const Login = () => {
             }
         })
 
-        const hasError = onError(({ graphQLErrors}) => {
-            if(graphQLErrors) {
-              return true
-            }
-            else {
-              return false
-            }
-        });
+        const x = false
+        function hasError() {
+            onError(({ graphQLErrors}) => {
+                if(graphQLErrors) {
+                    return true
+                }
+                else {
+                    return false 
+                }
+            })
+        }
 
         e.preventDefault()
 
-        if(hasError) {
+        if(!hasError()) {
             Auth.setAuth(true)
             alert("Success")
             navigate("/user")
